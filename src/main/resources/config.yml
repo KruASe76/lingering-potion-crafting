@@ -1,0 +1,12 @@
+messages: # Can be used to add translation
+    info: # To turn off certain messages leave the field empty (not empty quotes!)
+
+    error:
+        no-permission: Not enough permissions to call this command!
+        invalid-command: Invalid command!
+        player-only: This command can only be called by a player!
+
+    help: # Not intended to be edited (unless adding translation)
+        header: §7-------- §6[§aTemplate§6] §7--------------------------
+        help: §a/tmp §6help §a[command] §r- Show help for given command, for available commands otherwise
+        reload: §a/tmp §6reload §r- Reload config
