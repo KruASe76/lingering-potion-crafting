@@ -1,15 +1,15 @@
-package me.kruase.kotlin_plugin_template
+package me.kruase.lingering_potion_crafting
 
 import org.bukkit.configuration.file.FileConfiguration
 import java.io.File
 
 
-data class TemplateConfig(private val config: FileConfiguration) {
+data class LPCConfig(private val config: FileConfiguration) {
     val messages = MessagesConfig(config)
 }
 
 
-fun Template.getUserConfig(): TemplateConfig {
+fun LingeringPotionCrafting.getUserConfig(): LPCConfig {
     val configFile = File(dataFolder, "config.yml")
     val tempConfigFile = File(dataFolder, "temp-config.yml")
     val oldConfigFile = File(dataFolder, "old-config-${System.currentTimeMillis()}.yml")
@@ -35,7 +35,7 @@ fun Template.getUserConfig(): TemplateConfig {
             reloadConfig()
         }
 
-        TemplateConfig(config)
+        LPCConfig(config)
     } catch (e: Exception) {
         when (e) {
             is NullPointerException -> {
@@ -45,7 +45,7 @@ fun Template.getUserConfig(): TemplateConfig {
 
                 logger.info("New (default) config created!")
 
-                TemplateConfig(config)
+                LPCConfig(config)
             }
             else -> throw e
         }

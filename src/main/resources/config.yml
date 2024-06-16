@@ -7,6 +7,6 @@ messages: # Can be used to add translation
         player-only: This command can only be called by a player!
 
     help: # Not intended to be edited (unless adding translation)
-        header: §7-------- §6[§aTemplate§6] §7--------------------------
-        help: §a/tmp §6help §a[command] §r- Show help for given command, for available commands otherwise
-        reload: §a/tmp §6reload §r- Reload config
+        header: §7-------- §6[§LingeringPotionCrafting§6] §7--------------------------
+        help: §a/lpc §6help §a[command] §r- Show help for given command, for available commands otherwise
+        reload: §a/lpc §6reload §r- Reload config

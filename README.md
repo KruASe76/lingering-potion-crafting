@@ -1,4 +1,4 @@
-# kotlin-plugin-template
+# lingering-potion-crafting
 
 ![](https://img.shields.io/badge/MINECRAFT-1.16+-966C4A?style=for-the-badge&labelColor=53AC56)
 ![](https://img.shields.io/badge/JAVA-1.8+-5283A2?style=for-the-badge&labelColor=E86F00)
@@ -7,7 +7,7 @@
 [SpigotMC]() ·
 [CurseForge]()
 
-A Spigot (Bukkit) Minecraft plugin that...
+A Spigot (Bukkit) Minecraft plugin for custom floor crafting recipes using area effect cloud from a lingering potion 
 
 
 ## Features [WIP]
@@ -20,12 +20,12 @@ A Spigot (Bukkit) Minecraft plugin that...
 
 ### Commands
 
-`/template` is the main plugin command, which has an alias `/tmp`.
+`/lpc` is the main plugin command.
 
 | Command               | Description                                                   |
 |-----------------------|---------------------------------------------------------------|
-| `/tmp help [command]` | Show help for given command, for available commands otherwise |
-| `/tmp reload`         | Reload config                                                 |
+| `/lpc help [command]` | Show help for given command, for available commands otherwise |
+| `/lpc reload`         | Reload config                                                 |
 
 
 ## Configuration ([default](/src/main/resources/config.yml))
@@ -38,11 +38,11 @@ A Spigot (Bukkit) Minecraft plugin that...
 
 ## Permissions
 
-| Permission node   | Default | Description                                               |
-|-------------------|---------|-----------------------------------------------------------|
-| `template.help`   | true    | Allows to use `/tmp help` (lists only available commands) |
-| `template.reload` | op      | Allows to use `/tmp reload`                               |
-| `template.admin`  | op      | Refers to `template.reload` by default                    |
+| Permission node | Default | Description                                               |
+|-----------------|---------|-----------------------------------------------------------|
+| `lpc.help`      | true    | Allows to use `/lpc help` (lists only available commands) |
+| `lpc.reload`    | op      | Allows to use `/lpc reload`                               |
+| `lpc.admin`     | op      | Refers to `lpc.reload` by default                         |
 
 
 ## Special thanks to:

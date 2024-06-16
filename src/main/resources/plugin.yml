@@ -1,32 +1,32 @@
-name: Template
-version: '${project.version}'
-api-version: '${mcApi.version}'
-main: me.kruase.kotlin_plugin_template.Template
+name: ${project.name}
+version: ${project.version}
+api-version: ${mcApi.version}
+main: me.kruase.lingering_potion_crafting.LingeringPotionCrafting
+depend:
+    - NBTAPI
 authors: [ KruASe ]
 
-description: Template project for kotlin spigot plugins
+description: Custom floor crafting recipes using area effect cloud from a lingering potion
 
 commands:
-    template:
-        description: Main Template plugin command
-        permission: template.help
+    lpc:
+        description: Main LingeringPotionCrafting plugin command
+        permission: lpc.help
         usage: |-
             §7Run §6/help <command> [n] §7to get page n of help
             §a/<command> §6help §a[command] §r- Show help for given command, for available commands otherwise
             §a/<command> §6reload §r- Reload config
             §cWARNING: §eCommands listed here might be unavailable for you, to get help for available commands run §a/<command> help
-        aliases:
-            - tmp
 
 permissions:
-    template.help:
-        description: Allows to use §a/tmp §6help §r(lists only available commands)
+    lpc.help:
+        description: Allows to use §a/lpc §6help §r(lists only available commands)
         default: true
-    template.reload:
-        description: Allows to use §a/tmp §6reload
+    lpc.reload:
+        description: Allows to use §a/lpc §6reload
         default: op
-    template.admin:
-        description: Refers to §2template.reload §rby default
+    lpc.admin:
+        description: Refers to §2lpc.reload §rby default
         default: op
         children:
-            template.reload: true
+            lpc.reload: true

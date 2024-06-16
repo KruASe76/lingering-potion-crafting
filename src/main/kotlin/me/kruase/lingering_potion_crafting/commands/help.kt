@@ -1,7 +1,7 @@
-package me.kruase.kotlin_plugin_template.commands
+package me.kruase.lingering_potion_crafting.commands
 
-import me.kruase.kotlin_plugin_template.Template.Companion.userConfig
-import me.kruase.kotlin_plugin_template.util.hasPluginPermission
+import me.kruase.lingering_potion_crafting.LingeringPotionCrafting.Companion.userConfig
+import me.kruase.lingering_potion_crafting.util.hasPluginPermission
 import org.bukkit.command.CommandSender
 
 

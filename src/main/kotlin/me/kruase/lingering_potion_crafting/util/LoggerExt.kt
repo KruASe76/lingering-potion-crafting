@@ -1,4 +1,4 @@
-package me.kruase.kotlin_plugin_template.util
+package me.kruase.lingering_potion_crafting.util
 
 import java.util.logging.Logger
 

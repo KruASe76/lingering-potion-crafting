@@ -1,6 +1,6 @@
-package me.kruase.kotlin_plugin_template.util
+package me.kruase.lingering_potion_crafting.util
 
-import me.kruase.kotlin_plugin_template.Template.Companion.instance
+import me.kruase.lingering_potion_crafting.LingeringPotionCrafting.Companion.instance
 import org.bukkit.command.CommandSender
 
 

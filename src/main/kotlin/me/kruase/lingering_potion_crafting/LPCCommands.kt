@@ -1,9 +1,9 @@
-package me.kruase.kotlin_plugin_template
+package me.kruase.lingering_potion_crafting
 
-import me.kruase.kotlin_plugin_template.Template.Companion.instance
-import me.kruase.kotlin_plugin_template.Template.Companion.userConfig
-import me.kruase.kotlin_plugin_template.commands.help
-import me.kruase.kotlin_plugin_template.util.hasPluginPermission
+import me.kruase.lingering_potion_crafting.LingeringPotionCrafting.Companion.instance
+import me.kruase.lingering_potion_crafting.LingeringPotionCrafting.Companion.userConfig
+import me.kruase.lingering_potion_crafting.commands.help
+import me.kruase.lingering_potion_crafting.util.hasPluginPermission
 import org.bukkit.ChatColor
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
@@ -11,7 +11,7 @@ import org.bukkit.command.TabExecutor
 import org.bukkit.entity.Player
 
 
-class TemplateCommands : TabExecutor {
+class LPCCommands : TabExecutor {
     override fun onTabComplete(
         sender: CommandSender,
         command: Command,
