@@ -1,7 +1,7 @@
 package me.kruase.lingering_potion_crafting
 
 import me.kruase.lingering_potion_crafting.LingeringPotionCrafting.Companion.instance
-import me.kruase.lingering_potion_crafting.LingeringPotionCrafting.Companion.userConfig
+import me.kruase.lingering_potion_crafting.LingeringPotionCrafting.Companion.mainConfig
 import me.kruase.lingering_potion_crafting.commands.help
 import me.kruase.lingering_potion_crafting.util.hasPluginPermission
 import org.bukkit.ChatColor
@@ -22,13 +22,13 @@ class LPCCommands : TabExecutor {
 
         return when (fullArgs.getOrNull(0)) {
             null ->
-                userConfig.messages.help.keys
+                mainConfig.messages.help.keys
                     .filter { sender.hasPluginPermission(it.replace("-", ".")) } - "header"
             "help" ->
                 if (!sender.hasPluginPermission(args[0])) emptyList()
                 else when (fullArgs.getOrNull(1)) {
                     null ->
-                        userConfig.messages.help.keys
+                        mainConfig.messages.help.keys
                             .filter { sender.hasPluginPermission(it.replace("-", ".")) } - "header"
                     else -> emptyList()
                 }
@@ -44,18 +44,18 @@ class LPCCommands : TabExecutor {
                 "reload" -> {
                     if (!sender.hasPluginPermission("reload")) throw UnsupportedOperationException()
 
-                    userConfig = instance.getUserConfig()
+                    mainConfig = instance.getMainConfig()
                 }
             }
         } catch (e: Exception) {
             when (e) {
                 is IllegalArgumentException, is NoSuchElementException ->
                     sender.sendMessage(
-                        "${ChatColor.RED}${userConfig.messages.error["invalid-command"] ?: "Error: invalid-command"}"
+                        "${ChatColor.RED}${mainConfig.messages.error["invalid-command"] ?: "Error: invalid-command"}"
                     )
                 is UnsupportedOperationException ->
                     sender.sendMessage(
-                        "${ChatColor.RED}${userConfig.messages.error["no-permission"] ?: "Error: no-permission"}"
+                        "${ChatColor.RED}${mainConfig.messages.error["no-permission"] ?: "Error: no-permission"}"
                     )
                 is IllegalStateException ->
                     sender.sendMessage("${ChatColor.RED}${e.message ?: "Unknown error"}")
@@ -72,7 +72,7 @@ class LPCCommands : TabExecutor {
                 command(sender, args)
             else ->
                 sender
-                    .sendMessage("${ChatColor.RED}${userConfig.messages.error["player-only"] ?: "Error: player-only"}")
+                    .sendMessage("${ChatColor.RED}${mainConfig.messages.error["player-only"] ?: "Error: player-only"}")
         }
     }
 }

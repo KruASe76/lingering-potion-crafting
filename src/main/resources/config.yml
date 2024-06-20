@@ -1,3 +1,6 @@
+# time (in seconds) after which since the first craft the area_effect_cloud entity would disappear
+cloud-lifetime: 10
+
 messages: # Can be used to add translation
     info: # To turn off certain messages leave the field empty (not empty quotes!)
 

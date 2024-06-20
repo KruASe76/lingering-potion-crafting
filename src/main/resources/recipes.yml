@@ -1,0 +1,13 @@
+# example recipe
+"invisible item frame":
+    enabled: false
+    effect: invisibility # as in /effect command
+    usages: 16 # how many times the recipe can be applied per area_effect_cloud
+    components:
+        -   id: minecraft:item_frame
+            amount: 1
+            nbt: "{}"
+    result:
+        id: minecraft:item_frame
+        amount: 1
+        nbt: "{EntityTag:{Invisible:1}}"
