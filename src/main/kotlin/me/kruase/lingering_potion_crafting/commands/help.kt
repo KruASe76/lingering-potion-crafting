@@ -14,8 +14,8 @@ fun help(sender: CommandSender, args: List<String>) {
         null ->
             mainConfig.messages.help.keys
                 .filter { sender.hasPluginPermission(it.replace("-", ".")) || it == "header"}
-                .forEach { sender.sendMessage(arrayOf(mainConfig.messages.help[it])) }
-        in mainConfig.messages.help.keys - "header" -> sender.sendMessage(arrayOf(mainConfig.messages.help[args[0]]))
+                .forEach { sender.sendMessage(mainConfig.messages.help[it]) }
+        in mainConfig.messages.help.keys - "header" -> sender.sendMessage(mainConfig.messages.help[args[0]])
         else -> throw IllegalArgumentException()
     }
 }

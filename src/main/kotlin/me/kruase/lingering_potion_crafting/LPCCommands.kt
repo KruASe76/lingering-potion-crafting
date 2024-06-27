@@ -1,8 +1,8 @@
 package me.kruase.lingering_potion_crafting
 
-import me.kruase.lingering_potion_crafting.LingeringPotionCrafting.Companion.instance
 import me.kruase.lingering_potion_crafting.LingeringPotionCrafting.Companion.mainConfig
 import me.kruase.lingering_potion_crafting.commands.help
+import me.kruase.lingering_potion_crafting.commands.reload
 import me.kruase.lingering_potion_crafting.util.hasPluginPermission
 import org.bukkit.ChatColor
 import org.bukkit.command.Command
@@ -41,11 +41,7 @@ class LPCCommands : TabExecutor {
             when (args.getOrNull(0)) {
                 null -> help(sender, emptyList())
                 "help" -> help(sender, args.drop(1))
-                "reload" -> {
-                    if (!sender.hasPluginPermission("reload")) throw UnsupportedOperationException()
-
-                    mainConfig = instance.getMainConfig()
-                }
+                "reload" -> reload(sender)
             }
         } catch (e: Exception) {
             when (e) {

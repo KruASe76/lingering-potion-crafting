@@ -1,13 +1,17 @@
 package me.kruase.lingering_potion_crafting
 
 import org.bukkit.configuration.ConfigurationSection
+import org.bukkit.configuration.InvalidConfigurationException
 import org.bukkit.configuration.file.FileConfiguration
+import org.bukkit.configuration.file.YamlConfiguration
 import java.io.File
 
 
 data class LPCConfig(private val config: FileConfiguration) {
     val messages = MessagesConfig(config.getConfigurationSection("messages")!!)
+    val cloudInitialRadius = config.getDouble("cloud-initial-radius").toFloat()
     val cloudLifetimeTicks = config.getInt("cloud-lifetime") * 20
+    val craftPeriodicityTicks = config.getLong("craft-periodicity-ticks")
 }
 
 data class MessagesConfig(private val section: ConfigurationSection) {
@@ -35,37 +39,39 @@ fun LingeringPotionCrafting.getMainConfig(): LPCConfig {
     val oldConfigFile = File(dataFolder, "config-old-${System.currentTimeMillis()}.yml")
 
     return try {
-        saveDefaultConfig()
-        reloadConfig()
+        if (!configFile.exists())
+            saveResource(configFile.name, true)
 
         // validating current config
-        val currentConfigKeys = config.getKeys(true)
+        val currentConfigKeys =
+            YamlConfiguration.loadConfiguration(configFile)
+                .getKeys(true)
 
         configFile.renameTo(tempConfigFile)
-        saveDefaultConfig()
-        reloadConfig()
+        saveResource(configFile.name, true)
 
-        val defaultConfigKeys = config.getKeys(true)
+        val defaultConfigKeys =
+            YamlConfiguration.loadConfiguration(configFile)
+                .getKeys(true)
 
         if ((defaultConfigKeys - currentConfigKeys).isNotEmpty())
             throw NullPointerException()
-        else {
-            configFile.delete()
-            tempConfigFile.renameTo(configFile)
-            reloadConfig()
-
-            LPCConfig(config)
-        }
+        else
+            LPCConfig(YamlConfiguration.loadConfiguration(tempConfigFile))
+                .also {
+                    configFile.delete()
+                    tempConfigFile.renameTo(configFile)
+                }
     } catch (e: Exception) {
         when (e) {
-            is NullPointerException -> {
+            is InvalidConfigurationException, is NullPointerException -> {
                 logger.severe("Invalid $name config detected! Creating a new one (default)...")
 
                 tempConfigFile.renameTo(oldConfigFile)
 
                 logger.info("New (default) config created!")
 
-                LPCConfig(config)
+                LPCConfig(YamlConfiguration.loadConfiguration(configFile))
             }
             else -> throw e
         }

@@ -6,7 +6,7 @@ depend:
     - NBTAPI
 authors: [ KruASe ]
 
-description: Custom floor crafting recipes using area effect cloud from a lingering potion
+description: Custom floor crafting recipes using area_effect_cloud from a lingering potion
 
 commands:
     lpc:
